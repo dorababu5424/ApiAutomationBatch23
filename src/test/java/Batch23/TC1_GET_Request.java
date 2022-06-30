@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
@@ -95,6 +97,15 @@ public class TC1_GET_Request {
 		
 
 		Assert.assertEquals(statusCode, 404);
+		
+		
+		Headers allheaders=request.headers(); // capture all the headers from response
+		
+		for(Header header:allheaders)
+		{
+			System.out.println(header.getName()+"     "+header.getValue());
+							
+		}
 		
 		}
 	
